@@ -31,6 +31,12 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.15577778
     description: "Concept DOI of the underlying jamdock-suite CLI pipeline."
+acknowledgments: >-
+  jamdock-gui would not look the way it does without the early users of
+  jamdock-suite who tested the workflow, reported issues, and suggested
+  features that shaped this graphical interface. Particular thanks go to
+  Dr. Esam Orabi, Ms. Emma Nicole Short and Dr. Elena Cabezón for their
+  feedback, ideas and suggestions.
 preferred-citation:
   type: article
   title: "Protocol for an automated virtual screening pipeline including library generation and docking evaluation"

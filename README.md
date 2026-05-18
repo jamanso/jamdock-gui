@@ -95,6 +95,16 @@ Everything works out of the box on WSL2 with WSLg (Windows 11 or recent Windows 
 jamdock-gui
 ```
 
+## Acknowledgments
+
+`jamdock-gui` would not look the way it does without the early users of `jamdock-suite` who tested the workflow, reported issues, and suggested features that ended up shaping this graphical interface. Particular thanks go to:
+
+- **Dr. Esam Orabi**
+- **Ms. Emma Nicole Short**
+- **Dr. Elena Cabezón**
+
+Their feedback, ideas and suggestions are gratefully acknowledged.
+
 ## Citation
 
 If you use `jamdock-gui` or its outputs in publications, please cite the **method paper** for the pipeline:
