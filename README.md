@@ -57,33 +57,55 @@ If any of these is missing, fix that first — the GUI will refuse to launch oth
 
 ### Step 2 — Install jamdock-gui
 
-Once jamdock-suite is in place, install the GUI from PyPI:
+We strongly recommend installing into a dedicated virtual environment to keep Qt and RDKit isolated from your system Python.
+
+**2a. Install `venv` and `pip` if they are not already on the system.** On a fresh Debian / Ubuntu / WSL2 install you will typically need:
+
+```bash
+sudo apt install python3-venv python3-pip
+```
+
+**2b. Create and activate the virtual environment:**
+
+```bash
+python3 -m venv ~/.venvs/jamdock
+source ~/.venvs/jamdock/bin/activate
+```
+
+**2c. Install PDB2PQR** (used by the GUI for pH-dependent protonation of titratable residues — HIS, ASP, GLU, CYS, LYS, ARG, TYR):
+
+```bash
+pip install pdb2pqr
+```
+
+**2d. Install jamdock-gui itself**, either from PyPI (stable release):
 
 ```bash
 pip install jamdock-gui
 ```
 
-Or, to install the latest development version directly from GitHub:
+…or directly from GitHub (latest development version):
 
 ```bash
 pip install git+https://github.com/jamanso/jamdock-gui.git
 ```
 
-We strongly recommend a dedicated virtual environment to keep Qt and RDKit isolated from your system Python:
-
-```bash
-python -m venv ~/.venvs/jamdock
-source ~/.venvs/jamdock/bin/activate
-pip install jamdock-gui
-```
-
 ### Step 3 — Launch
 
+Activate the virtual environment first (you need to do this once per terminal session) and then start the GUI:
+
 ```bash
+source ~/.venvs/jamdock/bin/activate
 jamdock-gui
 ```
 
 The GUI auto-detects all binaries on launch. If something is on a non-standard path, open **Settings → Binary paths** and point it manually — the choices are persisted across sessions.
+
+> 💡 **Tip.** If you launch jamdock-gui frequently, add an alias to your `~/.bashrc` so you don't have to type the activation each time:
+> ```bash
+> alias jamdock='source ~/.venvs/jamdock/bin/activate && jamdock-gui'
+> ```
+> After `source ~/.bashrc`, just typing `jamdock` will open the application.
 
 ### WSL2 users
 
