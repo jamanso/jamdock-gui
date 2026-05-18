@@ -6,8 +6,6 @@
 
 Graphical interface for [jamdock-suite](https://github.com/jamanso/jamdock-suite) — an end-to-end pipeline for **automated virtual screening** built around **QuickVina 2**.
 
-This GUI is a layer on top of the original bash scripts: it doesn't replace them, it makes them point-and-click. CLI users can keep using the scripts as-is.
-
 ## Screenshots
 
 <table>
