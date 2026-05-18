@@ -1,5 +1,9 @@
 # jamdock-gui
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20268820.svg)](https://doi.org/10.5281/zenodo.20268820)
+[![CI](https://github.com/jamanso/jamdock-gui/actions/workflows/ci.yml/badge.svg)](https://github.com/jamanso/jamdock-gui/actions/workflows/ci.yml)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
 Graphical interface for [jamdock-suite](https://github.com/jamanso/jamdock-suite) — an end-to-end pipeline for **automated virtual screening** built around **QuickVina 2**.
 
 This GUI is a layer on top of the original bash scripts: it doesn't replace them, it makes them point-and-click. CLI users can keep using the scripts as-is.
@@ -97,8 +101,12 @@ If you use `jamdock-gui` or its outputs in publications, please cite the **metho
 
 - Barbosa Pereira, P.J., Ripoll-Rozada, J., Macedo-Ribeiro, S., & Manso, J.A. (2025). Protocol for an automated virtual screening pipeline including library generation and docking evaluation. *STAR Protocols* **6**(4), 104161. https://doi.org/10.1016/j.xpro.2025.104161
 
-and the **software**:
+and **the software** itself:
 
+- Manso, J.A. (2026). *jamdock-gui*. Zenodo. https://doi.org/10.5281/zenodo.20268820
+  *(this DOI always resolves to the latest version; for citing the specific
+  release used in your work, see the version-pinned DOI below)*
+- Manso, J.A. (2026). *jamdock-gui v1.0.0*. Zenodo. https://doi.org/10.5281/zenodo.20268821
 - Manso, J.A. (2025). *jamdock-suite*. Zenodo. https://doi.org/10.5281/zenodo.15577778
 
 Please also acknowledge the third-party tools the pipeline orchestrates:

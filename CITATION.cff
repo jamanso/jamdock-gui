@@ -23,8 +23,14 @@ keywords:
   - RDKit
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.20268820
+    description: "Concept DOI for jamdock-gui (resolves to the latest version)."
+  - type: doi
+    value: 10.5281/zenodo.20268821
+    description: "Zenodo DOI for jamdock-gui v1.0.0 (this specific release)."
+  - type: doi
     value: 10.5281/zenodo.15577778
-    description: "Concept DOI of the jamdock-suite ecosystem (resolves to the latest version)."
+    description: "Concept DOI of the underlying jamdock-suite CLI pipeline."
 preferred-citation:
   type: article
   title: "Protocol for an automated virtual screening pipeline including library generation and docking evaluation"
