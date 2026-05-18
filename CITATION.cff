@@ -1,0 +1,157 @@
+cff-version: 1.2.0
+message: "If you use jamdock-gui in your research, please cite it using the metadata below."
+title: "jamdock-gui: a graphical interface for the jamdock-suite virtual-screening pipeline"
+version: 1.0.0
+date-released: 2026-05-18
+type: software
+authors:
+  - family-names: "Manso García"
+    given-names: "José Antonio"
+    email: "joseantoniomanso1979@gmail.com"
+repository-code: "https://github.com/jamanso/jamdock-gui"
+url: "https://github.com/jamanso/jamdock-gui"
+license: CC-BY-NC-4.0
+keywords:
+  - virtual screening
+  - molecular docking
+  - QuickVina
+  - AutoDock
+  - drug discovery
+  - cheminformatics
+  - bioinformatics
+  - PySide6
+  - RDKit
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.15577778
+    description: "Concept DOI of the jamdock-suite ecosystem (resolves to the latest version)."
+preferred-citation:
+  type: article
+  title: "Protocol for an automated virtual screening pipeline including library generation and docking evaluation"
+  authors:
+    - family-names: "Barbosa Pereira"
+      given-names: "Pedro José"
+    - family-names: "Ripoll-Rozada"
+      given-names: "Jorge"
+    - family-names: "Macedo-Ribeiro"
+      given-names: "Sandra"
+    - family-names: "Manso García"
+      given-names: "José Antonio"
+  journal: "STAR Protocols"
+  volume: 6
+  issue: 4
+  start: 104161
+  year: 2025
+  doi: 10.1016/j.xpro.2025.104161
+references:
+  - type: software
+    title: "jamdock-suite: an end-to-end virtual-screening pipeline"
+    authors:
+      - family-names: "Manso García"
+        given-names: "José Antonio"
+    doi: 10.5281/zenodo.15577778
+    url: "https://github.com/jamanso/jamdock-suite"
+  - type: article
+    title: "AutoDock Vina: improving the speed and accuracy of docking with a new scoring function, efficient optimization, and multithreading"
+    authors:
+      - family-names: "Trott"
+        given-names: "Oleg"
+      - family-names: "Olson"
+        given-names: "Arthur J."
+    journal: "Journal of Computational Chemistry"
+    volume: 31
+    issue: 2
+    start: 455
+    end: 461
+    year: 2010
+    doi: 10.1002/jcc.21334
+  - type: article
+    title: "Fast, accurate, and reliable molecular docking with QuickVina 2"
+    authors:
+      - family-names: "Alhossary"
+        given-names: "Amr"
+      - family-names: "Handoko"
+        given-names: "Stephanus Daniel"
+      - family-names: "Mu"
+        given-names: "Yuguang"
+      - family-names: "Kwoh"
+        given-names: "Chee-Keong"
+    journal: "Bioinformatics"
+    volume: 31
+    issue: 13
+    start: 2214
+    end: 2216
+    year: 2015
+    doi: 10.1093/bioinformatics/btv082
+  - type: article
+    title: "Fpocket: An open source platform for ligand pocket detection"
+    authors:
+      - family-names: "Le Guilloux"
+        given-names: "Vincent"
+      - family-names: "Schmidtke"
+        given-names: "Peter"
+      - family-names: "Tuffery"
+        given-names: "Pierre"
+    journal: "BMC Bioinformatics"
+    volume: 10
+    start: 168
+    year: 2009
+    doi: 10.1186/1471-2105-10-168
+  - type: article
+    title: "AutoDock4 and AutoDockTools4: automated docking with selective receptor flexibility"
+    authors:
+      - family-names: "Morris"
+        given-names: "Garrett M."
+      - family-names: "Huey"
+        given-names: "Ruth"
+      - family-names: "Lindstrom"
+        given-names: "William"
+      - family-names: "Sanner"
+        given-names: "Michel F."
+      - family-names: "Belew"
+        given-names: "Richard K."
+      - family-names: "Goodsell"
+        given-names: "David S."
+      - family-names: "Olson"
+        given-names: "Arthur J."
+    journal: "Journal of Computational Chemistry"
+    volume: 30
+    issue: 16
+    start: 2785
+    end: 2791
+    year: 2009
+    doi: 10.1002/jcc.21256
+  - type: article
+    title: "Open Babel: An open chemical toolbox"
+    authors:
+      - family-names: "O'Boyle"
+        given-names: "Noel M."
+      - family-names: "Banck"
+        given-names: "Michael"
+      - family-names: "James"
+        given-names: "Craig A."
+      - family-names: "Morley"
+        given-names: "Chris"
+      - family-names: "Vandermeersch"
+        given-names: "Tim"
+      - family-names: "Hutchison"
+        given-names: "Geoffrey R."
+    journal: "Journal of Cheminformatics"
+    volume: 3
+    start: 33
+    year: 2011
+    doi: 10.1186/1758-2946-3-33
+  - type: article
+    title: "ZINC 15 – Ligand Discovery for Everyone"
+    authors:
+      - family-names: "Sterling"
+        given-names: "Teague"
+      - family-names: "Irwin"
+        given-names: "John J."
+    journal: "Journal of Chemical Information and Modeling"
+    volume: 55
+    issue: 11
+    start: 2324
+    end: 2337
+    year: 2015
+    doi: 10.1021/acs.jcim.5b00559

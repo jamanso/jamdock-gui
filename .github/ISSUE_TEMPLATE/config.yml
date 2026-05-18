@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or general discussion
+    url: https://github.com/jamanso/jamdock-gui/discussions
+    about: For usage questions and open-ended discussion, please use GitHub Discussions instead of opening an issue.
+  - name: jamdock-suite (underlying bash scripts)
+    url: https://github.com/jamanso/jamdock-suite/issues
+    about: Bugs in the CLI pipeline (jamlib, jamreceptor, jamqvina, jamrank, jamresume) belong in the jamdock-suite repository.

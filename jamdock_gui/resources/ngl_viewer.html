@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jamdock-gui · NGL viewer</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #1a1a1a; }
+    #viewport  { width: 100%; height: 100%; }
+    #status {
+      position: fixed; left: 8px; bottom: 8px;
+      color: #aaa; font: 11px/1.4 -apple-system, system-ui, sans-serif;
+      background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 3px;
+      pointer-events: none;
+    }
+  </style>
+  <!--
+    NGL.js — molecular viewer used by RCSB. ~700 KB minified. We pull from
+    jsDelivr to keep the wheel small; for offline labs you can drop a copy
+    of ngl.min.js next to this HTML and adjust the script src.
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/ngl@2.0.0-dev.40/dist/ngl.js"></script>
+</head>
+<body>
+  <div id="viewport"></div>
+  <div id="status">Initialising…</div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ------------------------------------------------------------------
+    // Stage init
+    // ------------------------------------------------------------------
+    var stage = null;
+    var statusEl = document.getElementById('status');
+
+    function setStatus(msg) {
+      if (statusEl) statusEl.textContent = msg;
+    }
+
+    function init() {
+      if (typeof NGL === 'undefined') {
+        setStatus('NGL failed to load (network?). Drop ngl.min.js next to this file for offline use.');
+        return;
+      }
+      stage = new NGL.Stage('viewport', {
+        backgroundColor: '#1a1a1a',
+        quality: 'medium',
+      });
+      window.addEventListener('resize', function () { stage.handleResize(); });
+      setStatus('Ready. No structure loaded.');
+    }
+
+    // ------------------------------------------------------------------
+    // Public API consumed by viewer3d.py (runJavaScript calls)
+    // ------------------------------------------------------------------
+    var jamdock = {
+      // Load a structure from raw text (PDB, PDBQT, MOL2, ...).
+      loadStructureText: function (text, ext, name) {
+        if (!stage) return false;
+        ext = ext || 'pdb';
+        name = name || 'structure';
+        stage.removeAllComponents();
+        var blob = new Blob([text], { type: 'text/plain' });
+        return stage.loadFile(blob, { ext: ext, defaultRepresentation: false, name: name })
+          .then(function (component) {
+            // Cartoon for protein, ball+stick for everything else.
+            component.addRepresentation('cartoon', {
+              colorScheme: 'chainid',
+              quality: 'medium',
+            });
+            component.addRepresentation('ball+stick', {
+              sele: 'hetero and not water',
+              quality: 'medium',
+            });
+            component.autoView();
+            setStatus('Loaded: ' + name + ' (' + component.structure.atomCount + ' atoms)');
+            jamdock._main = component;
+            return true;
+          })
+          .catch(function (err) {
+            setStatus('Load failed: ' + err);
+            return false;
+          });
+      },
+
+      // Highlight a chain (or set of chains) with a strong colour.
+      // Pass an array like ['A', 'B'].
+      setChainsKept: function (chainIds) {
+        if (!stage || !jamdock._main) return false;
+        var sel = chainIds.length
+          ? '(' + chainIds.map(function (c) { return ':' + c; }).join(' or ') + ')'
+          : 'none';
+        // Remove any prior 'kept' rep
+        jamdock._main.eachRepresentation(function (repr) {
+          if (repr.name === 'kept') jamdock._main.removeRepresentation(repr);
+        });
+        var rep = jamdock._main.addRepresentation('cartoon', {
+          sele: sel,
+          color: '#3498db',
+          quality: 'medium',
+        });
+        rep.name = 'kept';
+        return true;
+      },
+
+      // Add a translucent surface (or alpha-spheres) representation for a list of pockets.
+      // pocketsAtoms: [{number: 1, coords: [[x,y,z],...], color: '#ff6600'}]
+      setPockets: function (pockets) {
+        if (!stage) return false;
+        // Remove old pocket components
+        var toRemove = [];
+        stage.eachComponent(function (c) {
+          if (c.name && c.name.indexOf('pocket-') === 0) toRemove.push(c);
+        });
+        toRemove.forEach(function (c) { stage.removeComponent(c); });
+
+        pockets.forEach(function (p) {
+          // Build a tiny "ATOM" pdb-ish blob for the pocket alpha spheres so NGL
+          // can render them as ball+stick. Element 'C' is fine — we just want
+          // visual hints.
+          var atoms = '';
+          p.coords.forEach(function (xyz, i) {
+            var serial = (i + 1).toString().padStart(5);
+            var x = xyz[0].toFixed(3).padStart(8);
+            var y = xyz[1].toFixed(3).padStart(8);
+            var z = xyz[2].toFixed(3).padStart(8);
+            atoms += 'ATOM  ' + serial + '  C   STP A   1    '
+                  + x + y + z + '  1.00  0.00           C\n';
+          });
+          atoms += 'END\n';
+          var blob = new Blob([atoms], { type: 'text/plain' });
+          stage.loadFile(blob, { ext: 'pdb', name: 'pocket-' + p.number, defaultRepresentation: false })
+            .then(function (component) {
+              component.addRepresentation('spacefill', {
+                radius: 1.2,
+                color: p.color || '#ff8800',
+                opacity: 0.55,
+              });
+            });
+        });
+        return true;
+      },
+
+      // Draw a wireframe grid box. Replaces any previous box.
+      setGridBox: function (cx, cy, cz, sx, sy, sz, color) {
+        if (!stage) return false;
+        // Remove prior box shape
+        var toRemove = [];
+        stage.eachComponent(function (c) {
+          if (c.name === '__gridbox__') toRemove.push(c);
+        });
+        toRemove.forEach(function (c) { stage.removeComponent(c); });
+
+        var c = color || '#1abc9c';
+        var hx = sx / 2, hy = sy / 2, hz = sz / 2;
+        // Eight corners
+        var v = function (dx, dy, dz) { return [cx + dx, cy + dy, cz + dz]; };
+        var corners = [
+          v(-hx, -hy, -hz), v(+hx, -hy, -hz), v(+hx, +hy, -hz), v(-hx, +hy, -hz),
+          v(-hx, -hy, +hz), v(+hx, -hy, +hz), v(+hx, +hy, +hz), v(-hx, +hy, +hz),
+        ];
+        var edges = [
+          [0,1],[1,2],[2,3],[3,0],   // bottom
+          [4,5],[5,6],[6,7],[7,4],   // top
+          [0,4],[1,5],[2,6],[3,7],   // verticals
+        ];
+        var shape = new NGL.Shape('grid_box');
+        edges.forEach(function (e) {
+          shape.addCylinder(corners[e[0]], corners[e[1]], NGL.ColormakerRegistry.makeColor(c), 0.15);
+        });
+        var component = stage.addComponentFromObject(shape);
+        component.name = '__gridbox__';
+        component.addRepresentation('buffer');
+        return true;
+      },
+
+      // Center the view on the loaded structure.
+      autoView: function () {
+        if (stage) stage.autoView(800);
+      },
+
+      // Replace the placeholder background colour (e.g. for screenshots).
+      setBackground: function (color) {
+        if (stage) stage.setParameters({ backgroundColor: color });
+      },
+
+      // Health probe.
+      isReady: function () { return stage !== null; },
+
+      _main: null,
+    };
+
+    window.jamdock = jamdock;
+
+    // Defer init until DOM is ready.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+</body>
+</html>

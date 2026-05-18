@@ -1,0 +1,50 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual envs
+.venv/
+venv/
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-local docking artefacts (when developers test in-place).
+# Patterns referring to runtime artefacts at the *project root* are
+# anchored with a leading `/` so they do not accidentally swallow
+# same-named files inside the package (e.g. jamdock_gui/core/grid_box.py).
+/docking_results/
+/library_pdbqt_*/
+/library_sdf_*/
+/fda_pdbqt_compounds/
+/fda_sdf_compounds/
+/downloads/
+/*.pdbqt
+/*.pdb
+/*.sdf
+/grid.conf
+/grid_box.py
+/.jamdock_state.json

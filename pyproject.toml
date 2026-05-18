@@ -1,0 +1,92 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jamdock-gui"
+version = "1.0.0"
+description = "Graphical interface for jamdock-suite — automated virtual screening pipeline (QuickVina 2)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "CC-BY-NC-4.0" }
+authors = [
+    { name = "José Antonio Manso García", email = "joseantoniomanso1979@gmail.com" }
+]
+keywords = [
+    "virtual-screening",
+    "molecular-docking",
+    "quickvina",
+    "autodock",
+    "drug-discovery",
+    "cheminformatics",
+    "bioinformatics",
+    "pyside6",
+    "rdkit"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: Science/Research",
+    "License :: Other/Proprietary License",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+
+dependencies = [
+    "PySide6>=6.6",
+    "PySide6-Addons>=6.6",
+    "rdkit>=2023.09",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "pyqtgraph>=0.13",
+    "biopython>=1.81",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-qt>=4.4",
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+
+[project.urls]
+Homepage = "https://github.com/jamanso/jamdock-suite"
+Repository = "https://github.com/jamanso/jamdock-suite"
+"Bug Tracker" = "https://github.com/jamanso/jamdock-suite/issues"
+"Citation" = "https://doi.org/10.5281/zenodo.15577778"
+
+[project.scripts]
+jamdock-gui = "jamdock_gui.app:main"
+
+[project.gui-scripts]
+jamdock-gui-qt = "jamdock_gui.app:main"
+
+[tool.setuptools.packages.find]
+include = ["jamdock_gui*"]
+
+[tool.setuptools.package-data]
+jamdock_gui = [
+    "resources/**/*",
+    "resources/icons/*",
+    "resources/*.qss",
+    "resources/*.html",
+    "scripts/*",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C90"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+qt_api = "pyside6"
