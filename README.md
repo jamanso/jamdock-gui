@@ -14,21 +14,17 @@ This GUI is a layer on top of the original bash scripts: it doesn't replace them
   <tr>
     <td width="50%" align="center">
       <img src="docs/screenshots/01_receptor_load_pdb.png" alt="Receptor tab — Load PDB and structural-water detection">
-      <br><sub><b>Receptor → Load &amp; Clean PDB.</b> Chains and HET ligands are auto-detected; structural waters are scored against four geometric criteria and the user picks which ones to keep.</sub>
     </td>
     <td width="50%" align="center">
       <img src="docs/screenshots/02_receptor_pockets.png" alt="Receptor tab — Fpocket detection with PyMOL visualization">
-      <br><sub><b>Receptor → Detect Pockets (Fpocket).</b> Every cavity is shown in PyMOL with its own colour and label so you can compare them visually before choosing one for the grid box.</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
       <img src="docs/screenshots/03_docking_parallel.png" alt="Docking tab — parallel QuickVina runs with live throughput chart">
-      <br><sub><b>Docking.</b> QuickVina 2 jobs run in a configurable worker pool. Live throughput chart, cumulative count, and per-ligand status — pause / resume / crash-recovery work out of the box.</sub>
     </td>
     <td width="50%" align="center">
       <img src="docs/screenshots/04_results_table.png" alt="Results tab — interactive table with Rule-of-Five colouring and PyMOL pose viewer">
-      <br><sub><b>Results.</b> Filterable table (Affinity, SimScore, MW, ZINC ID); rows are coloured green when they pass Lipinski's Rule of Five; click any row and the pose loads in PyMOL.</sub>
     </td>
   </tr>
 </table>
