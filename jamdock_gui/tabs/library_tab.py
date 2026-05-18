@@ -25,7 +25,6 @@ from __future__ import annotations
 
 import os
 import re
-from pathlib import Path
 
 from PySide6.QtCore import Qt, Slot
 from PySide6.QtWidgets import (
@@ -51,7 +50,6 @@ from jamdock_gui.settings import LibraryDefaults
 from jamdock_gui.tabs.base_tab import BaseTab
 from jamdock_gui.widgets.citation_dialog import JAMLIB_CITATIONS_HTML, CitationDialog
 from jamdock_gui.widgets.log_console import LogConsole
-
 
 # Phase patterns — matched against each line of stdout in order.
 JAMLIB_PHASE_PATTERNS: list[tuple[str, re.Pattern[str]]] = [

@@ -31,13 +31,13 @@ from __future__ import annotations
 import shutil
 import time
 from collections import deque
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 from PySide6.QtCore import QObject, QProcess, QProcessEnvironment, Signal, Slot
 
 from jamdock_gui.core.qvina_log import parse_qvina_log
-from jamdock_gui.core.state import JobState, RunState, load_state, save_state
+from jamdock_gui.core.state import RunState, save_state
 
 
 # ---------------------------------------------------------------------------

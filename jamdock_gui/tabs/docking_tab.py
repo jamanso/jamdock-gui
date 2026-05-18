@@ -46,7 +46,6 @@ from jamdock_gui.widgets.citation_dialog import (
 from jamdock_gui.widgets.log_console import LogConsole
 from jamdock_gui.widgets.throughput_chart import ThroughputChart
 
-
 _STATUS_COLORS: dict[str, QColor] = {
     "queued":  QColor("#999"),
     "running": QColor("#1f6feb"),

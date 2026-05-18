@@ -14,11 +14,6 @@ Features
 from __future__ import annotations
 
 import csv
-import os
-import shutil
-import subprocess
-import sys
-import webbrowser
 import zipfile
 from datetime import datetime
 from pathlib import Path
@@ -51,10 +46,6 @@ from jamdock_gui.tabs.base_tab import BaseTab
 from jamdock_gui.widgets.results_model import (
     COL_AFFINITY,
     COL_LIGAND,
-    COL_MW,
-    COL_RANK,
-    COL_SIMSCORE,
-    COL_ZINC,
     ResultsFilterProxy,
     ResultsTableModel,
 )

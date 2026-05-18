@@ -6,7 +6,6 @@ The user can opt out via "Don't show again" — a flag persisted in
 """
 from __future__ import annotations
 
-from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QCheckBox,
     QDialog,
@@ -18,7 +17,6 @@ from PySide6.QtWidgets import (
 )
 
 from jamdock_gui.settings import Settings
-
 
 # ---- citation libraries (verbatim from the bash scripts) ---------------
 JAMLIB_CITATIONS_HTML = """

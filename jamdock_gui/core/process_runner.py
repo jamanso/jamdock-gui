@@ -23,7 +23,6 @@ from pathlib import Path
 
 from PySide6.QtCore import QObject, QProcess, QProcessEnvironment, QTimer, Signal
 
-
 # -- defaults shared across scripts -------------------------------------
 DEFAULT_PROGRESS_PATTERN = re.compile(
     r"\[[#\s]*\]\s*(?P<percent>\d+)%\s*\((?P<current>\d+)/(?P<total>\d+)\)"

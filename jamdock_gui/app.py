@@ -86,11 +86,11 @@ def _patch_webengine_for_sandbox_environments() -> None:
 _patch_webengine_for_sandbox_environments()
 
 # noqa: E402 — late imports are intentional; see module docstring.
-from PySide6.QtCore import QCoreApplication           # noqa: E402
-from PySide6.QtWidgets import QApplication            # noqa: E402
+from PySide6.QtCore import QCoreApplication  # noqa: E402
+from PySide6.QtWidgets import QApplication  # noqa: E402
 
 from jamdock_gui import APP_NAME, APP_ORG, __version__  # noqa: E402
-from jamdock_gui.main_window import MainWindow          # noqa: E402
+from jamdock_gui.main_window import MainWindow  # noqa: E402
 
 
 def main() -> int:

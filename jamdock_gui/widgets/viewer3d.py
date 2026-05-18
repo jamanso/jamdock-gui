@@ -38,8 +38,8 @@ log = logging.getLogger(__name__)
 # Try to import the optional WebEngine dependency. If it fails we provide a
 # graceful stub so the rest of the GUI can still run.
 try:
-    from PySide6.QtWebEngineWidgets import QWebEngineView
     from PySide6.QtWebEngineCore import QWebEnginePage  # noqa: F401
+    from PySide6.QtWebEngineWidgets import QWebEngineView
     _HAS_WEBENGINE = True
 except ImportError:  # pragma: no cover - environment-dependent
     QWebEngineView = None  # type: ignore[assignment]

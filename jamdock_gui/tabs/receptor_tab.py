@@ -12,7 +12,6 @@ invalidates downstream steps so the user can iterate.
 """
 from __future__ import annotations
 
-from collections.abc import Iterable
 from pathlib import Path
 
 from PySide6.QtCore import Qt, Slot
@@ -64,6 +63,7 @@ from jamdock_gui.core.receptor_prep import (
     expected_fpocket_dir,
     normalize_residue_names,
 )
+from jamdock_gui.core.waters import inject_waters_into_pdb
 from jamdock_gui.deps import probe_all
 from jamdock_gui.settings import Settings
 from jamdock_gui.tabs.base_tab import BaseTab
@@ -71,11 +71,9 @@ from jamdock_gui.widgets.citation_dialog import (
     JAMRECEPTOR_CITATIONS_HTML,
     CitationDialog,
 )
-from jamdock_gui.core.waters import inject_waters_into_pdb
 from jamdock_gui.widgets.log_console import LogConsole
 from jamdock_gui.widgets.pymol_panel import PymolPanel
 from jamdock_gui.widgets.water_panel import WaterPanel
-
 
 STEPS: tuple[str, ...] = (
     "Step 1 — Load & Clean PDB",
@@ -865,7 +863,7 @@ class Step3Widget(QWidget):
         ok, msg = launch_pymol(pymol=pymol, files=files, workdir=cwd)
         if ok:
             self._tab.append_log_info(
-                f"Launched PyMOL with "
+                "Launched PyMOL with "
                 + (f"pockets: {fpocket_pml.name}" if fpocket_pml.is_file()
                    else f"receptor: {receptor.name}")
             )
@@ -1075,11 +1073,11 @@ class Step4Widget(QWidget):
             workdir=wd,
         )
         if ok:
-            self.lbl_save_status.setText(f"OK: PyMOL launched")
+            self.lbl_save_status.setText("OK: PyMOL launched")
             self._tab.append_log_info(
                 f"Launched PyMOL with {receptor.name}"
                 + (f" + {fpocket_pml.name}" if fpocket_pml else "")
-                + (f" + grid_box.py" if grid_pml.is_file() else "")
+                + (" + grid_box.py" if grid_pml.is_file() else "")
             )
         else:
             self._tab.append_log_info(f"PyMOL launch FAILED: {msg}")

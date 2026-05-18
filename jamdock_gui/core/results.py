@@ -31,7 +31,9 @@ from pathlib import Path
 from PySide6.QtCore import QObject, Signal
 
 from jamdock_gui.core.qvina_log import (
-    DockingLog, DockingMode, parse_qvina_log,
+    DockingLog,
+    DockingMode,
+    parse_qvina_log,
 )
 
 log = logging.getLogger(__name__)

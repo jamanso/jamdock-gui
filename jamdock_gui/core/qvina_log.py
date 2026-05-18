@@ -26,7 +26,6 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-
 # Match a single docking-mode row. Tolerates leading/trailing whitespace and
 # both ``-7.812`` and ``  -7.8`` style values.
 _MODE_ROW_RE = re.compile(

@@ -22,12 +22,14 @@ from __future__ import annotations
 from typing import Any
 
 from PySide6.QtCore import (
-    QAbstractTableModel, QModelIndex, QSortFilterProxyModel, Qt,
+    QAbstractTableModel,
+    QModelIndex,
+    QSortFilterProxyModel,
+    Qt,
 )
 from PySide6.QtGui import QBrush, QColor
 
 from jamdock_gui.core.results import ResultRow, ro5_violation_details
-
 
 # ---------------------------------------------------------------------------
 # Column layout
