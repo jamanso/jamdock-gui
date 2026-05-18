@@ -104,9 +104,17 @@ pip install jamdock-gui
 pip install git+https://github.com/jamanso/jamdock-gui.git
 ```
 
+**2e. After installation, close the current terminal session and open a new one before launching jamdock-gui. This ensures the environment is reinitialized correctly.
+
+You can close the current session with:
+
+```bash
+exit
+```
+
 ### Step 3 — Launch
 
-Activate the virtual environment first (you need to do this once per terminal session) and then start the GUI:
+Open a new Linux terminal and activate the virtual environment first (you need to do this once per terminal session) and then start the GUI:
 
 ```bash
 source ~/.venvs/jamdock/bin/activate
