@@ -1,0 +1,56 @@
+name: Release to PyPI
+
+# Two triggers:
+#   * On every GitHub Release marked as "published" → automatic upload.
+#   * Manually from the Actions tab (workflow_dispatch) → useful for
+#     re-running v1.0.0 after we set the workflow up, since the v1.0.0
+#     release event already fired before this file existed.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    name: Build wheel + sdist and publish to PyPI
+    runs-on: ubuntu-22.04
+
+    # OIDC token for PyPI Trusted Publishing — no API token required.
+    # The `id-token: write` permission is what unlocks that mechanism.
+    permissions:
+      id-token: write
+      contents: read
+
+    # Pin the deployment to a dedicated environment in GitHub settings.
+    # The same environment name must be configured on PyPI's Trusted
+    # Publisher page (see README of this workflow change).
+    environment:
+      name: pypi
+      url: https://pypi.org/p/jamdock-gui
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+
+      - name: Build wheel and sdist
+        run: python -m build
+
+      - name: Verify package metadata
+        # Sanity check before uploading — catches malformed long_description,
+        # missing license file references, etc.
+        run: |
+          pip install twine
+          twine check dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
