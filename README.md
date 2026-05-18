@@ -104,7 +104,7 @@ pip install jamdock-gui
 pip install git+https://github.com/jamanso/jamdock-gui.git
 ```
 
-**2e. After installation, close the current terminal session and open a new one before launching jamdock-gui. This ensures the environment is reinitialized correctly.
+**2e. After installation, close the current terminal session and open a new one before launching jamdock-gui. This ensures the environment is reinitialized correctly.**
 
 You can close the current session with:
 
