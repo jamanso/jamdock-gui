@@ -4,6 +4,14 @@
 [![CI](https://github.com/jamanso/jamdock-gui/actions/workflows/ci.yml/badge.svg)](https://github.com/jamanso/jamdock-gui/actions/workflows/ci.yml)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jamanso/jamdock-gui/main/assets/jamdock-gui_banner_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jamanso/jamdock-gui/main/assets/jamdock-gui_banner_light.png">
+    <img src="https://raw.githubusercontent.com/jamanso/jamdock-gui/main/assets/jamdock-gui_banner_light.png" alt="jamdock-gui banner" width="850">
+  </picture>
+</p>
+
 Graphical interface for [jamdock-suite](https://github.com/jamanso/jamdock-suite) — an end-to-end pipeline for **automated virtual screening** built around **QuickVina 2**.
 
 ## Screenshots
