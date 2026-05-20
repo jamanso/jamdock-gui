@@ -12,7 +12,7 @@
   </picture>
 </p>
 
-Graphical interface for [jamdock-suite](https://github.com/jamanso/jamdock-suite) — an end-to-end pipeline for **automated virtual screening** built around **QuickVina 2**.
+Graphical user interface (GUI) for [jamdock-suite](https://github.com/jamanso/jamdock-suite) — an end-to-end pipeline for **automated virtual screening** built around **QuickVina 2**.
 
 ## Screenshots
 
