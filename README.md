@@ -114,7 +114,7 @@ You can close the current session with:
 exit
 ```
 
-### Step 3 — Launch
+## Launch
 
 Open a new Linux terminal and activate the virtual environment first (you need to do this once per terminal session) and then start the GUI:
 
