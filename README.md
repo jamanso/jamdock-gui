@@ -131,16 +131,6 @@ The GUI auto-detects all binaries on launch. If something is on a non-standard p
 > ```
 > After `source ~/.bashrc`, just typing `jamdock` will open the application.
 
-### WSL2 users
-
-Everything works out of the box on WSL2 with WSLg (Windows 11 or recent Windows 10 builds), no X server required. If you are on an older Windows that needs an X server (VcXsrv, X410), launch it before starting `jamdock-gui` and make sure `DISPLAY` is exported in your shell.
-
-## Usage
-
-```bash
-jamdock-gui
-```
-
 ## Acknowledgments
 
 `jamdock-gui` would not look the way it does without the early users of `jamdock-suite` who tested the workflow, reported issues, and suggested features that ended up shaping this graphical interface. Particular thanks go to:
